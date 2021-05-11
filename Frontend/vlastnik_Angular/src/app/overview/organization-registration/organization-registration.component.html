@@ -1,0 +1,81 @@
+<div class="general-container"
+     fxLayoutGap="50"
+     fxFlex="100"
+     fxLayout="row wrap"
+     fxLayoutAlign="center center">
+  <div fxFlex="grow" fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column"
+       fxLayoutGap="10px" fxLayoutAlign="center center">
+    <div class="general-item"
+         fxFlex="30"
+         fxFlex.xs="grow"
+         fxFlex.sm="grow"
+         fxFlex.md="grow"
+         fxLayout.xs="column"
+         fxLayout.sm="column"
+         fxLayout.md="column"
+         fxLayout="column" fxLayoutAlign="start stretch">
+      <mat-vertical-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="icoForm">
+          <form [formGroup]="icoForm">
+            <ng-template matStepLabel><span class="mat-headline">IČO organizace</span>
+            </ng-template>
+            <mat-form-field>
+              <mat-label>Zadejte IČO</mat-label>
+              <input [(ngModel)]="organization.ico" matInput placeholder="12345678" formControlName="icoField" required>
+            </mat-form-field>
+            <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column"
+                 fxLayoutAlign="end center"
+                 fxLayoutAlign.xs="start center">
+              <button mat-button matStepperNext class="submitButton" (click)="init(false)">Pokračovat k
+                ověření
+              </button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel><span class="mat-headline">Ověření</span></ng-template>
+          <div fxLayout="column" fxLayoutGap="5px">
+            <div *ngIf="icoValidated" class="mat-subheading-2 green font-size-25">K dispozici</div>
+            <div *ngIf="notPermitted" class="mat-subheading-2 red font-size-25">IČO není v registru SVJ</div>
+            <div *ngIf="alreadyRegistered" class="mat-subheading-2 red font-size-25">Již registrováno</div>
+            <ng-container *ngIf="!icoValidated && !notPermitted && !alreadyRegistered">
+              <div
+                class="mat-subheading-2 red font-size-25">{{getErrorText()}}</div>
+            </ng-container>
+            <div>
+              <br>
+              <button *ngIf="!(alreadyRegistered || notPermitted) && !icoValidated && !loading" mat-button
+                      class="submitButton"
+                      (click)="preSubmitForm(getRecaptchaActionIcoVerify())">Ověřit
+              </button>
+              <button *ngIf="(alreadyRegistered || notPermitted) && !icoValidated" mat-button matStepperPrevious
+                      class="submitButton">
+                Návrat zpět
+              </button>
+              <button *ngIf="icoValidated" mat-button matStepperNext class="submitButton">Pokračovat k
+                registraci
+              </button>
+              <div *ngIf="loading">
+                <mat-spinner color="primary"></mat-spinner>
+              </div>
+            </div>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel><span class="mat-headline">Registrace</span></ng-template>
+          <ng-container>
+            <div
+              class="mat-subheading-2 red font-size-25">{{getErrorText() == getNotPermittedText() ? 'Překročen maximální počet výborů' : getErrorText()}}</div>
+          </ng-container>
+          <button *ngIf="!loading && icoValidated" mat-button class="submitButton"
+                  (click)="preSubmitForm(getRecaptchaActionRegisterOrganization())">
+            Dokončit registraci
+          </button>
+          <div *ngIf="loading">
+            <mat-spinner color="primary"></mat-spinner>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </div>
+  </div>
+</div>

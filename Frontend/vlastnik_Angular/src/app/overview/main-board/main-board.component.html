@@ -1,0 +1,19 @@
+<div class="general-container-for-pages"
+     fxFlex="100"
+     fxLayout="row wrap"
+     fxLayoutAlign="start start">
+  <mat-tab-group fxFlex="grow" fxLayout="column" [selectedIndex]="tabId">
+    <mat-tab label="Moje jednotky">
+      <app-my-flat (afterDone)="flatsLoaded($event)"></app-my-flat>
+    </mat-tab>
+    <mat-tab label="Moje výbory">
+      <app-organization-personal (afterDone)="organizationsLoaded($event)">></app-organization-personal>
+    </mat-tab>
+    <mat-tab label="Přidat jednotku / výbor">
+      <app-token-pin></app-token-pin>
+    </mat-tab>
+    <mat-tab label="Registrovat organizaci">
+      <app-organization-registration></app-organization-registration>
+    </mat-tab>
+  </mat-tab-group>
+</div>

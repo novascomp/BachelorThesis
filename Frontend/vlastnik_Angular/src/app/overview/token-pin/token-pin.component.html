@@ -1,0 +1,46 @@
+<div class="general-container"
+     fxLayoutGap="50"
+     fxFlex="100"
+     fxLayout="row wrap"
+     fxLayoutAlign="center center">
+  <div fxFlex="grow" fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column"
+       fxLayoutGap="10px" fxLayoutAlign="center center">
+    <div class="general-item"
+         fxFlex="30"
+         fxFlex.xs="grow"
+         fxFlex.sm="grow"
+         fxFlex.md="grow"
+         fxLayout.xs="column"
+         fxLayout.sm="column"
+         fxLayout.md="column"
+         fxLayout="column" fxLayoutAlign="start stretch">
+      <mat-vertical-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="tokenForm">
+          <form [formGroup]="tokenForm">
+            <ng-template matStepLabel><span class="mat-headline">Přístupový kód</span>
+            </ng-template>
+            <mat-form-field>
+              <mat-label>Zadejte přístupový kód</mat-label>
+              <input [(ngModel)]="token.key" matInput placeholder="XXXXX-XXXXX-XXXXX-XXXXX" formControlName="tokenField"
+                     required>
+            </mat-form-field>
+            <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column"
+                 fxLayoutAlign="end center"
+                 fxLayoutAlign.xs="start center">
+              <button class="submitButton" mat-button (click)="preSubmitForm(getRecaptchaActionPinToken())">Přidat
+                jednotku / výbor
+              </button>
+            </div>
+            <br>
+            <ng-container *ngIf="relationshipExists">
+              <mat-card *ngIf="relationshipExists" class="red-color">Již použit obdobný kód</mat-card>
+            </ng-container>
+            <ng-container *ngIf="!relationshipExists">
+              <mat-card *ngIf="getErrorText() != null" class="red-color">{{getErrorText() == getNotPermittedText() ? 'Překročen maximální počet výborů'  : getErrorText()}}</mat-card>
+            </ng-container>
+          </form>
+        </mat-step>
+      </mat-vertical-stepper>
+    </div>
+  </div>
+</div>

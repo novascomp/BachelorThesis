@@ -1,0 +1,393 @@
+{
+	"info": {
+		"_postman_id": "cb2cde02-8ecf-4e22-ab89-b923d17d95e0",
+		"name": "NVM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get Message By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}messages/{messageId}",
+									"host": [
+										"{{server}}messages"
+									],
+									"path": [
+										"{messageId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Message",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"heading\": \"heading\",\r\n    \"body\": \"body\",\r\n    \"creatorKey\": \"creatorKey\",\r\n    \"categoryList\": [\r\n        {\r\n            \"categoryId\": \"categoryId\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}messages",
+									"host": [
+										"{{server}}messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Message By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}messages/{messageId}",
+									"host": [
+										"{{server}}messages"
+									],
+									"path": [
+										"{messageId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Messages",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}messages?page=0&size=100&sort=general.time",
+									"host": [
+										"{{server}}messages"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "100"
+										},
+										{
+											"key": "sort",
+											"value": "general.time"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "Get Message Categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}messages/{messageId}/categories",
+									"host": [
+										"{{server}}messages"
+									],
+									"path": [
+										"{messageId}",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Messages By Categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}messages/bycategories",
+									"host": [
+										"{{server}}messages"
+									],
+									"path": [
+										"bycategories"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get Category By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}categories/{categoryId}",
+									"host": [
+										"{{server}}categories"
+									],
+									"path": [
+										"{categoryId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Category",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"text\": \"text\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}categories",
+									"host": [
+										"{{server}}categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Category By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}categories/{categoryId}",
+									"host": [
+										"{{server}}categories"
+									],
+									"path": [
+										"{categoryId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}categories",
+									"host": [
+										"{{server}}categories"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Files",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get File By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}files/{fileId}",
+									"host": [
+										"{{server}}files"
+									],
+									"path": [
+										"{fileId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete File By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}files/{fileId}",
+									"host": [
+										"{{server}}files"
+									],
+									"path": [
+										"{fileId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Files",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}files",
+									"host": [
+										"{{server}}files"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "FileNvf Upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}files",
+							"host": [
+								"{{server}}files"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": "http://localhost:8082/NVM/"
+		}
+	]
+}

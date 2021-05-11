@@ -1,0 +1,31 @@
+<div class="general-container"
+     fxLayout="row wrap"
+     fxLayoutAlign="center center">
+  <div fxFlex="grow" fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="row wrap" fxLayout.md="row wrap"
+       fxLayoutAlign="center center">
+    <div
+      fxFlex.xs="grow"
+      fxFlex.sm="50"
+      fxFlex.md="50"
+      fxFlex="25"
+      fxLayout="column" fxLayoutAlign="center center">
+      <img src="assets/Vlastnik.png" style="width:100%;height:100%" alt="Vlastnik">
+      <button *ngIf="!isAuthenticated" (click)="oktaAuth.login('/')" routerLink="/" class="login" mat-flat-button
+              color="primary">Přihlásit se
+      </button>
+      <button *ngIf="isAuthenticated" (click)="oktaAuth.logout()" routerLink="/" class="login" mat-flat-button
+              color="accent">
+        Odhlásit se
+      </button>
+      <br>
+      <span CLASS="black-color font-size-15">Verze aplikace: <strong>FINAL 1. 0. 0</strong></span>
+      <span CLASS="black-color font-size-15">10. 5. 2021</span>
+      <br>
+      <span CLASS="black-color font-size-15">Vytvořil: Pavel Novotný</span>
+      <a href="mailto: novascomp@gmail.com">novascomp@gmail.com</a>
+      <br>
+      <span CLASS="black-color font-size-15">Návrh loga: Anna Houfková</span>
+      <br>
+    </div>
+  </div>
+</div>

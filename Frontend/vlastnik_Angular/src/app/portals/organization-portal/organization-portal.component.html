@@ -1,0 +1,123 @@
+<div class="general-container-for-pages"
+     fxLayoutGap="50"
+     fxFlex="100"
+     fxLayout="row wrap"
+     fxLayoutAlign="start start">
+  <mat-tab-group fxFlex="grow" fxLayout="column" (selectedTabChange)="tabChanged($event)">
+    <mat-tab [label]="'Jednotky v domě'">
+      <ng-container>
+        <div *ngIf="!organizationPortalLoaded">
+          <mat-spinner color="primary"></mat-spinner>
+        </div>
+        <mat-card *ngIf="organizationPortalUnavailable || flatServiceUnavailable" fxFlex.xs="100%" fxFlex.sm="100%"
+                  fxFlex.md="100%"
+                  class="general-item red-color"
+                  fxLayout="column">{{getUnavailableText()}}
+        </mat-card>
+        <ng-container *ngIf="organizationPortalLoaded && !organizationPortalUnavailable && !flatServiceUnavailable">
+          <div *ngIf="organizationFlatTableInit != null && flatUploaderInit != null" fxFlex="grow" fxLayout="row wrap"
+               fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column"
+               fxLayoutGap="10px" fxLayoutAlign="start start" class="parent">
+            <div class="mat-elevation-z8 general-item general-background"
+                 fxFlex="45"
+                 fxFlex.xs="grow"
+                 fxFlex.sm="grow"
+                 fxFlex.md="grow"
+                 fxLayout.xs="column"
+                 fxLayout.sm="column"
+                 fxLayout.md="column"
+                 fxLayout="column" fxLayoutAlign="start stretch">
+              <app-organization-flat [initComponent]="organizationFlatTableInit"
+                                     (afterDone)="initAfterFlatsUploaded()"></app-organization-flat>
+            </div>
+            <div class="mat-elevation-z8 general-item general-background"
+                 fxFlex="45"
+                 fxFlex.xs="grow"
+                 fxFlex.sm="grow"
+                 fxFlex.md="grow"
+                 fxLayout.xs="column"
+                 fxLayout.sm="column"
+                 fxLayout.md="column"
+                 fxLayout="column" fxLayoutAlign="start stretch">
+              <app-flat-uploader [initComponent]="flatUploaderInit"
+                                 (afterDone)="initAfterFlatsUploaded()"></app-flat-uploader>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </mat-tab>
+    <mat-tab label="Dokumenty pro výbor">
+      <ng-container>
+        <div *ngIf="!organizationPortalLoaded">
+          <mat-spinner color="primary"></mat-spinner>
+        </div>
+        <mat-card *ngIf="organizationPortalUnavailable || flatServiceUnavailable" fxFlex.xs="100%" fxFlex.sm="100%"
+                  fxFlex.md="100%"
+                  class="general-item red-color"
+                  fxLayout="column">{{getUnavailableText()}}
+        </mat-card>
+        <ng-container *ngIf="organizationPortalLoaded  && !organizationPortalUnavailable && !flatServiceUnavailable">
+          <div *ngIf="documentTableInit != null" fxFlex="grow" fxLayout="row wrap" fxLayout.xs="column"
+               fxLayout.sm="column" fxLayout.md="column"
+               fxLayoutGap="10px" fxLayoutAlign="start start" class="parent">
+            <div class="mat-elevation-z8 general-item general-background"
+                 fxFlex="45"
+                 fxFlex.xs="grow"
+                 fxFlex.sm="grow"
+                 fxFlex.md="grow"
+                 fxLayout.xs="column"
+                 fxLayout.sm="column"
+                 fxLayout.md="column"
+                 fxLayout="column" fxLayoutAlign="start stretch">
+              <app-document-table [initComponent]="documentTableInit"></app-document-table>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </mat-tab>
+    <mat-tab label="Nástěnka domu">
+      <ng-container>
+        <div *ngIf="!organizationPortalLoaded">
+          <mat-spinner color="primary"></mat-spinner>
+        </div>
+        <mat-card *ngIf="organizationPortalUnavailable" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%"
+                  class="general-item red-color"
+                  fxLayout="column">{{getUnavailableText()}}
+        </mat-card>
+        <ng-container *ngIf="organizationPortalLoaded  && !organizationPortalUnavailable">
+          <app-organization-board *ngIf="organizationBoardInit != null"
+                                  [initComponent]="organizationBoardInit"></app-organization-board>
+        </ng-container>
+      </ng-container>
+    </mat-tab>
+    <mat-tab label="Přístupové kódy">
+      <ng-container>
+        <div *ngIf="!organizationPortalLoaded">
+          <mat-spinner color="primary"></mat-spinner>
+        </div>
+        <mat-card *ngIf="organizationPortalUnavailable" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%"
+                  class="general-item red-color"
+                  fxLayout="column">{{getUnavailableText()}}
+        </mat-card>
+        <ng-container *ngIf="organizationPortalLoaded  && !organizationPortalUnavailable">
+          <div *ngIf="organizationTokensTableInit != null" fxFlex="grow" fxLayout="row wrap" fxLayout.xs="column"
+               fxLayout.sm="column" fxLayout.md="column"
+               fxLayoutGap="10px" fxLayoutAlign="start start" class="parent">
+            <div class="mat-elevation-z8 general-item general-background"
+                 fxFlex="45"
+                 fxFlex.xs="grow"
+                 fxFlex.sm="grow"
+                 fxFlex.md="grow"
+                 fxLayout.xs="column"
+                 fxLayout.sm="column"
+                 fxLayout.md="column"
+                 fxLayout="column" fxLayoutAlign="start stretch">
+              <app-token-table [initComponent]="organizationTokensTableInit">
+              </app-token-table>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </mat-tab>
+  </mat-tab-group>
+</div>

@@ -1,0 +1,73 @@
+<mat-card>{{name}}</mat-card>
+<ng-container *ngIf="!(flatsComponentsLoaded || organizationComponentsLoaded) && getErrorText() == null">
+  <div>
+    <mat-spinner color="primary"></mat-spinner>
+  </div>
+</ng-container>
+<ng-container *ngIf="flatsComponentsLoaded || organizationComponentsLoaded">
+  <br>
+  <form [formGroup]="documentFormGroup">
+    <mat-form-field appearance="fill">
+      <mat-label>Předmět</mat-label>
+      <input [(ngModel)]="document.heading" formControlName="heading" matInput required>
+    </mat-form-field>
+    <br>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Text zprávy</mat-label>
+      <textarea [(ngModel)]="document.body" formControlName="body" matInput class="white-background"
+                required></textarea>
+    </mat-form-field>
+  </form>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>{{componentName}}</mat-label>
+    <mat-select [formControl]="categories" multiple>
+      <mat-option *ngFor="let component of components" [value]="component.componentId">{{component.text}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <br>
+  <div class="black-color">
+    <ngx-dropzone style="height: 200px" fxFlex="100" (change)="onSelect($event)">
+      <ngx-dropzone-label>{{dropzoneTitle}}</ngx-dropzone-label>
+      <ngx-dropzone-preview multiple *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+        <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+      </ngx-dropzone-preview>
+    </ngx-dropzone>
+  </div>
+  <br>
+  <div *ngIf="this.submitted">
+    <mat-spinner color="primary"></mat-spinner>
+  </div>
+  <ng-container *ngIf="!this.submitted">
+    <mat-card>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column" fxLayoutAlign="end center"
+           fxLayoutAlign.xs="start center">
+        <ng-container *ngIf="organizationDocumentTableForResident || organizationDocumentTableForMember">
+          <button fxFlex="grow"
+                  class="submitButton"
+                  mat-button [matTooltip]="categoryAddFormDisplay ? 'Kliknutím zavřete formulář' : 'Kliknutím zobrazíte formulář přidání kategorie'"
+                  (click)="displayCategory()">{{categoryAddFormDisplay ? 'Zavřít formulář' : 'Přidat kategorii'}}</button>
+          <div fxFlex="grow">&nbsp;</div>
+        </ng-container>
+        <ng-container *ngIf="!(organizationDocumentTableForResident || organizationDocumentTableForMember)">
+          <div fxFlex="grow"></div>
+        </ng-container>
+        <button fxFlex="grow" class="submitButton"
+                mat-button matTooltip="Kliknutím odešlete formulář"
+                (click)="preSubmitForm(getRecaptchaActionDocument())">Odeslat
+        </button>
+      </div>
+    </mat-card>
+  </ng-container>
+</ng-container>
+<ng-container *ngIf="getErrorText() != null || this.invalidForm">
+  <br>
+  <mat-card class="red-color">{{getErrorText()}}</mat-card>
+</ng-container>
+<ng-container *ngIf="categoryAddFormDisplay">
+  <br>
+  <app-component-stepper [initComponent]="componentStepperInit"
+                         (afterDone)="categoriesUpdated($event)"></app-component-stepper>
+</ng-container>

@@ -1,0 +1,89 @@
+<div class="general-container-for-pages"
+     fxLayoutGap="50"
+     fxFlex="100"
+     fxLayout="row wrap"
+     fxLayoutAlign="start start">
+  <mat-tab-group fxFlex="100%" fxLayout="column" (selectedTabChange)="tabChanged($event)">
+    <mat-tab [label]="'Jednotka ' + flat.identifier">
+      <div *ngIf="!(flatTabResidentViewLoaded || organizationMemberViewLoaded)">
+        <mat-spinner color="primary"></mat-spinner>
+      </div>
+      <mat-card *ngIf="flatTabResidentViewUnavailable || organizationMemberViewUnavailable" fxFlex.xs="100%"
+                fxFlex.sm="100%" fxFlex.md="100%"
+                class="general-item red-color"
+                fxLayout="column">{{getUnavailableText()}}
+      </mat-card>
+      <ng-container
+        *ngIf="(flatTabResidentViewLoaded || organizationMemberViewLoaded) && !(flatTabResidentViewUnavailable || organizationMemberViewUnavailable)">
+        <div *ngIf="personTableInit != null" fxFlex="grow" fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column"
+             fxLayout.md="column"
+             fxLayoutGap="10px" fxLayoutAlign="start start" class="parent">
+          <div class="mat-elevation-z8 general-item general-background"
+               fxFlex="45"
+               fxFlex.xs="grow"
+               fxFlex.sm="grow"
+               fxFlex.md="grow"
+               fxLayout.xs="column"
+               fxLayout.sm="column"
+               fxLayout.md="column"
+               fxLayout="column" fxLayoutAlign="start stretch">
+            <app-person-table *ngIf="detail != null" [initComponent]="personTableInit">
+            </app-person-table>
+          </div>
+          <div *ngIf="organizationMemberView" class="mat-elevation-z8 general-item general-background"
+               fxFlex="50"
+               fxFlex.xs="grow"
+               fxFlex.sm="grow"
+               fxFlex.md="grow"
+               fxLayout.xs="column"
+               fxLayout.sm="column"
+               fxLayout.md="column"
+               fxLayout="column" fxLayoutAlign="start stretch">
+            <app-token-table *ngIf="flat != null && organization != null && flatTokensTableInit != null"
+                             [initComponent]="flatTokensTableInit">
+            </app-token-table>
+          </div>
+        </div>
+      </ng-container>
+    </mat-tab>
+    <mat-tab *ngIf="flatResidentView" label="Dokumenty">
+      <div *ngIf="!flatTabResidentViewLoaded">
+        <mat-spinner color="primary"></mat-spinner>
+      </div>
+      <mat-card *ngIf="flatTabResidentViewUnavailable" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%"
+                class="general-item red-color"
+                fxLayout="column">{{getUnavailableText()}}
+      </mat-card>
+      <ng-container *ngIf="flatTabResidentViewLoaded && !flatTabResidentViewUnavailable">
+        <div *ngIf="messageTableInit != null" fxFlex="grow" fxLayout="row wrap" fxLayout.xs="column"
+             fxLayout.sm="column" fxLayout.md="column"
+             fxLayoutGap="10px" fxLayoutAlign="start start" class="parent">
+          <div class="mat-elevation-z8 general-item general-background"
+               fxFlex="45"
+               fxFlex.xs="grow"
+               fxFlex.sm="grow"
+               fxFlex.md="grow"
+               fxLayout.xs="column"
+               fxLayout.sm="column"
+               fxLayout.md="column"
+               fxLayout="column" fxLayoutAlign="start stretch">
+            <app-document-table [initComponent]="messageTableInit"></app-document-table>
+          </div>
+        </div>
+      </ng-container>
+    </mat-tab>
+    <mat-tab *ngIf="flatResidentView" label="Nástěnka domu">
+      <div *ngIf="!flatTabResidentViewLoaded">
+        <mat-spinner color="primary"></mat-spinner>
+      </div>
+      <mat-card *ngIf="flatTabResidentViewUnavailable" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%"
+                class="general-item red-color"
+                fxLayout="column">{{getUnavailableText()}}
+      </mat-card>
+      <ng-container *ngIf="flatTabResidentViewLoaded && !flatTabResidentViewUnavailable">
+        <app-organization-board *ngIf="organizationBoardInit != null"
+                                [initComponent]="organizationBoardInit"></app-organization-board>
+      </ng-container>
+    </mat-tab>
+  </mat-tab-group>
+</div>

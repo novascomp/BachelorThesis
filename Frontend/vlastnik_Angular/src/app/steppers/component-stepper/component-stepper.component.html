@@ -1,0 +1,23 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="componentGroup">
+    <form [formGroup]="componentGroup">
+      <ng-template matStepLabel><span class="mat-headline">Kategorie</span></ng-template>
+      <mat-form-field>
+        <mat-label>Zadejte název kategorie</mat-label>
+        <input [(ngModel)]="lightweightComponent.text" matInput formControlName="component" required>
+      </mat-form-field>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column" fxLayoutAlign="end center"
+           fxLayoutAlign.xs="start center">
+        <div fxFlex="grow"></div>
+        <button fxFlex="grow" class="submitButton" mat-button matStepperNext
+                (click)="preSubmitForm(getRecaptchaActionComponent())">Přidat
+        </button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
+<br>
+<mat-card *ngIf="invalidForm"
+          class="red-color">{{getBadRequestText()}}</mat-card>
+<mat-card *ngIf="getErrorText() != null"
+          class="red-color">{{(getErrorText() == getConflictFailedText()) ? 'Kategorie již existuje' : getErrorText()}}</mat-card>

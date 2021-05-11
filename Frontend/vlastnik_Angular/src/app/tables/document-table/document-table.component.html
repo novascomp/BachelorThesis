@@ -1,0 +1,158 @@
+<mat-card>{{tableName}}</mat-card>
+<br>
+<mat-form-field appearance="fill">
+  <mat-label>{{filterName}}</mat-label>
+  <mat-select [formControl]="componentsSelect" (selectionChange)="selectionChange($event)" multiple>
+    <mat-option *ngFor="let component of components" [value]="component.componentId">{{component.text}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+<br>
+<table mat-table [dataSource]="dataSource" matSortActive="date" matSortDirection="desc" multiTemplateDataRows
+       class="mat-elevation-z8 full-table cursor-pointer" matSort>
+  <ng-container matColumnDef="heading">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Předmět</th>
+    <td mat-cell *matCellDef="let element">{{element.heading}}</td>
+  </ng-container>
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Datum</th>
+    <td mat-cell *matCellDef="let element">
+      <input readonly matInput [matDatepicker]="picker"
+             placeholder="" [value]="element.general.date" required>
+      <mat-datepicker #picker></mat-datepicker>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div class="general-description">
+          <ng-container *ngIf="element.body.toString().split('#').length > 1">
+            <strong>Od jednotky: </strong>
+            <br>
+            <br>
+            {{element.body.toString().split('#')[element.body.toString().split('#').length - 1]}}
+            <br>
+            <br>
+          </ng-container>
+          <strong>Text: </strong>
+          <br>
+          <br>
+          <a
+            *ngFor="let b of element.body.toString().split('#'); let i = index">{{i === element.body.toString().split('#').length - 1 && i != 0 ? '' : (i === 0) ? b : '#' + b}}</a>
+          <br>
+          <br>
+          <strong>Přílohy ke stažení: </strong>
+          <br>
+          <br>
+          <a *ngIf="(element.shares == null) && !dataSource.sharesUnavailable">Neobsahuje žádné přílohy</a>
+          <strong class="red-color" *ngIf="dataSource.sharesUnavailable">{{getUnavailableText()}}</strong>
+          <a *ngFor="let f of element.shares" [href]="f.link">{{f.fileName}} <br></a>
+          <br>
+          <br>
+          <ng-container>
+            <strong>{{componentName}}</strong>
+            <br>
+            <br>
+            <a *ngFor="let f of element.categories">{{f.text}} &nbsp;</a>
+            <br>
+            <br>
+          </ng-container>
+          <ng-container
+            *ngIf="deleteDone && (flatDocumentTableForResident || flatDocumentTableForMember || organizationDocumentTableForMember) && !dataSource.sharesUnavailable">
+            <div fxLayout="row" fxLayout="row"
+                 fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column"
+                 fxLayoutAlign="end center" fxLayoutAlign.xs="start center">
+              <div fxFlex="grow"></div>
+              <button mat-raised-button fxFlex="grow" class="submitButton" color="accent"
+                      (click)="preSubmitForm(element.fileId, getRecaptchaActionDocument())">Smazat
+              </button>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="!deleteDone">
+            <div fxLayout="row" fxLayout="row"
+                 fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column"
+                 fxLayoutAlign="end center" fxLayoutAlign.xs="start center">
+              <div fxFlex="grow"></div>
+              <div>
+                <mat-spinner color="primary"></mat-spinner>
+              </div>
+            </div>
+          </ng-container>
+          <br>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row cursor-auto"></tr>
+</table>
+<ng-container>
+  <div class="full-table white-background">&nbsp;</div>
+  <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column" fxLayoutAlign="end center"
+       class="white-background">
+    <mat-spinner *ngIf="dataSource.loading$ | async" fxFlex="30" color="primary" diameter="65"></mat-spinner>
+    <span>&nbsp;</span>
+    <button *ngIf="!(dataSource.loading$ | async) && this.ready == true" fxFlex="30" class="submitButton"
+            mat-button matTooltip="Kliknutím aktualizujete tabulku"
+            (click)="loadPage()">
+      <span class="material-icons">update</span> Aktualizovat
+    </button>
+    <mat-paginator fxFlex="grow" class="font-size-15 white-background" #paginator [length]="dataSource?.totalElements"
+                   [pageIndex]="0"
+                   [pageSize]="5"
+                   [pageSizeOptions]="[5, 10, 15, 20, 50]" (page)="pageChange($event)">
+    </mat-paginator>
+  </div>
+</ng-container>
+<br>
+<mat-card *ngIf="!dataSource.unavailable">
+  <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column" fxLayoutAlign="end center"
+       fxLayoutAlign.xs="start center">
+    <ng-container
+      *ngIf="(organizationDocumentTableForResident || organizationDocumentTableForMember)  && !(dataSource.loading$ | async) && this.ready == true">
+      <button *ngIf="aresDone" fxFlex="grow" class="submitButton" mat-button
+              matTooltip="Kliknutím vygenerujete přepis organizace z ARES"
+              (click)="preSubmitForm(null, getRecaptchaActionAres())">{{'Informace z ARES'}}</button>
+      <div *ngIf="!aresDone">
+        <mat-spinner color="primary" diameter="65"></mat-spinner>
+      </div>
+      <div fxFlex="grow">&nbsp;</div>
+    </ng-container>
+    <ng-container *ngIf="(organizationDocumentTableForMember)">
+      <button fxFlex="grow" class="submitButton"
+              mat-button
+              [matTooltip]="categoryTableDisplay ? 'Kliknutím zavřete formulář' : 'Kliknutím zobrazíte tabulku s kategoriemi'"
+              (click)="categoryTable()">{{categoryTableDisplay ? 'Zavřít přehled' : 'Přehled kategorií'}}</button>
+      <div fxFlex="grow">&nbsp;</div>
+    </ng-container>
+    <ng-container *ngIf="!(organizationDocumentTableForResident || organizationDocumentTableForMember)">
+      <div fxFlex="grow"></div>
+    </ng-container>
+    <button fxFlex="grow" class="submitButton"
+            mat-button
+            [matTooltip]="documentAddFormDisplay ? 'Kliknutím zavřete formulář' : 'Kliknutím zobrazíte formulář nahrání dokumentu'"
+            (click)="documentAdd()">{{documentAddFormDisplay ? 'Zavřít formulář' : 'Přidat dokument'}}
+    </button>
+  </div>
+</mat-card>
+<ng-container *ngIf="categoryTableDisplay && (organizationDocumentTableForMember)">
+  <br>
+  <app-categories-table
+    [initComponent]="categoryTableInit" (afterDone)="categoryUpdated($event)"></app-categories-table>
+</ng-container>
+<ng-container *ngIf="getErrorText() != null || dataSource.unavailable">
+  <br>
+  <mat-card class="red-color">{{getErrorText() != null ? getErrorText() : getUnavailableText()}}</mat-card>
+</ng-container>
+<ng-container *ngIf="documentAddFormDisplay">
+  <br>
+  <app-document-uploader [initComponent]="documentUploaderInit"
+                         (afterDone)="documentUpdated($event)">
+  </app-document-uploader>
+</ng-container>

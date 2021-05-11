@@ -1,0 +1,28 @@
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.mat-form-field{
+  color: black;
+  width: 100%;
+}
+
+.mat-error{
+  color: black;
+}
+
+.next-button {
+  background: #3f51b5;
+  align-self: center;
+  color: white;
+  width: 33%;
+  height: 50px;
+}
+
+.item-1 {
+  background-color: #3f51b5;
+}

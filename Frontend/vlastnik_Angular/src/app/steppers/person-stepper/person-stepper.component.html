@@ -1,0 +1,110 @@
+<mat-vertical-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstNameFormGroup">
+    <form [formGroup]="firstNameFormGroup">
+      <ng-template matStepLabel><span class="mat-headline">Jméno</span></ng-template>
+        <mat-form-field>
+          <mat-label>Zadejte jméno</mat-label>
+          <input [(ngModel)]="person.firstName" matInput placeholder="" formControlName="firstName" required>
+        </mat-form-field>
+        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column" fxLayoutAlign="end center"
+             fxLayoutAlign.xs="start center">
+          <div *ngIf="!crudUpdate" fxFlex="grow">&nbsp;</div>
+          <button class="submitButton" mat-button matStepperNext>Pokračovat</button>
+          <div *ngIf="crudUpdate" fxFlex="grow">&nbsp;</div>
+          <button *ngIf="crudUpdate" class="submitButton" mat-button
+                  (click)="preSubmitForm(getRecaptchaActionPerson())">
+            Odeslat
+          </button>
+        </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="lastNameFormGroup">
+    <form [formGroup]="lastNameFormGroup">
+      <ng-template matStepLabel><span class="mat-headline">Příjmení</span></ng-template>
+        <mat-form-field>
+          <mat-label>Zadejte příjmení</mat-label>
+          <input [(ngModel)]="person.lastName" matInput formControlName="lastName" placeholder="" required>
+        </mat-form-field>
+        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column" fxLayoutAlign="end center"
+             fxLayoutAlign.xs="start center">
+          <button fxFlex="grow" class="submitButton" mat-button matStepperPrevious>Návrat</button>
+          <div fxFlex="grow">&nbsp;</div>
+          <button fxFlex="grow" class="submitButton" mat-button matStepperNext>Pokračovat</button>
+          <div *ngIf="crudUpdate" fxFlex="grow">&nbsp;</div>
+          <button *ngIf="crudUpdate" fxFlex="grow" class="submitButton" mat-button
+                  (click)="preSubmitForm(getRecaptchaActionPerson())">
+            Odeslat
+          </button>
+        </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="emailFormGroup">
+    <form [formGroup]="emailFormGroup">
+      <ng-template matStepLabel><span class="mat-headline">Email</span></ng-template>
+      <mat-form-field>
+        <mat-label>Zadejte email</mat-label>
+        <input [(ngModel)]="person.email" type="email" matInput formControlName="email"
+               placeholder="example@example.com" required>
+      </mat-form-field>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column" fxLayoutAlign="end center"
+           fxLayoutAlign.xs="start center">
+        <button fxFlex="grow" class="submitButton" mat-button matStepperPrevious>Návrat</button>
+        <div fxFlex="grow">&nbsp;</div>
+        <button fxFlex="grow" class="submitButton" mat-button matStepperNext>Pokračovat</button>
+        <div *ngIf="crudUpdate" fxFlex="grow">&nbsp;</div>
+        <button *ngIf="crudUpdate" fxFlex="grow" class="submitButton" mat-button
+                (click)="preSubmitForm(getRecaptchaActionPerson())">
+          Odeslat
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="phoneFormGroup">
+    <form [formGroup]="phoneFormGroup">
+      <ng-template matStepLabel><span class="mat-headline">Telefonní číslo</span></ng-template>
+      <mat-form-field>
+        <mat-label>Zadejte telefonní číslo</mat-label>
+        <input [(ngModel)]="person.phone" type="tel" matInput formControlName="phone" placeholder="" required>
+      </mat-form-field>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column" fxLayoutAlign="end center"
+           fxLayoutAlign.xs="start center">
+        <button fxFlex="grow" class="submitButton" mat-button matStepperPrevious>Návrat</button>
+        <div fxFlex="grow">&nbsp;</div>
+        <button fxFlex="grow" class="submitButton" mat-button matStepperNext>Pokračovat</button>
+        <div *ngIf="crudUpdate" fxFlex="grow">&nbsp;</div>
+        <button *ngIf="crudUpdate" fxFlex="grow" class="submitButton" mat-button
+                (click)="preSubmitForm(getRecaptchaActionPerson())">
+          Odeslat
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="dateOfBirthFormGroup">
+    <ng-template matStepLabel><span class="mat-headline">Datum narození</span></ng-template>
+    <form [formGroup]="dateOfBirthFormGroup">
+      <mat-form-field>
+        <mat-label>Vyberte datum</mat-label>
+        <input [(ngModel)]="person.dateOfBirth" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker"
+               formControlName="dateOfBirth"
+               placeholder="" required
+               [readonly]="true">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column" fxLayoutAlign="end center"
+           fxLayoutAlign.xs="start center">
+        <button fxFlex="grow" class="submitButton" mat-button matStepperPrevious>Návrat</button>
+        <div fxFlex="grow">&nbsp;</div>
+        <button fxFlex="grow" class="submitButton" mat-button matStepperNext
+                (click)="preSubmitForm(getRecaptchaActionPerson())">
+          Odeslat
+        </button>
+      </div>
+    </form>
+  </mat-step>
+</mat-vertical-stepper>
+<br>
+<mat-card *ngIf="invalidForm"
+          class="red-color">{{getBadRequestText()}}</mat-card>
+<mat-card *ngIf="getErrorText() != null"
+          class="red-color">{{getErrorText()}}</mat-card>

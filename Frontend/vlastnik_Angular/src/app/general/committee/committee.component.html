@@ -1,0 +1,55 @@
+<ng-container *ngIf="organization.ico != null">
+  <ng-container *ngIf="organization.aresVrForFEPruposes.obchodniFirmaValue != null">
+    <mat-card>{{organization.aresVrForFEPruposes.obchodniFirmaValue + " (IČO: " + organization.ico + ") "}}</mat-card>
+    <br>
+  </ng-container>
+  <ng-container *ngIf="organization.aresVrForFEPruposes.obchodniFirmaValue == null">
+    <mat-card>{{'IČO: ' + organization.ico}}</mat-card>
+    <br>
+  </ng-container>
+</ng-container>
+<mat-card>{{componentName}}</mat-card>
+<br>
+<mat-card>
+  <div class="example-element-description">
+    <strong>Email: </strong>
+    <br>
+    <br>
+    <p class="font-size-25">
+      {{this.committee == null ? "nevyplněno" : this.committee.email}}
+    </p>
+    <strong>Telefonní číslo: </strong>
+    <br>
+    <br>
+    <p class="font-size-25">
+      {{this.committee == null ? "nevyplněno" : this.committee.phone}}
+    </p>
+  </div>
+  <div>&nbsp;</div>
+  <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column" fxLayoutAlign="end center"
+       fxLayoutAlign.xs="start center">
+    <button *ngIf="organizationMemberView" fxFlex="grow" class="submitButton"
+            mat-button
+            [matTooltip]="displayCommitteeMemberForm ? 'Kliknutím zavřete formulář' : 'Kliknutím upravíte kontakty na výbor'"
+            (click)="displayCommitteeMemberFormClick()">
+      {{displayCommitteeMemberForm ? 'Skrýt formulář' : 'Upravit kontakty' }}</button>
+    <div fxFlex="grow">&nbsp;</div>
+    <button *ngIf="committeeExists" fxFlex="grow" class="submitButton"
+            (click)="displayClick(displayCommitteeMembers)"
+            mat-button
+            [matTooltip]="displayCommitteeMembers ? 'Kliknutím skryjete tabulku' : 'Kliknutím zobrazíte tabulku se členy výboru'">
+      {{displayCommitteeMembers ? 'Skrýt členy výboru' : 'Zobrazit členy výboru' }}</button>
+  </div>
+</mat-card>
+<ng-container *ngIf="unavailable">
+  <br>
+  <mat-card fxFlex.xs="100%" class="red-color">{{getUnavailableText()}}
+  </mat-card>
+</ng-container>
+<ng-container *ngIf="displayCommitteeMemberForm">
+  <br>
+  <app-committee-stepper
+    [initComponent]="committeeStepperInit"
+    (afterDone)="committeeUpdated($event)"></app-committee-stepper>
+</ng-container>
+

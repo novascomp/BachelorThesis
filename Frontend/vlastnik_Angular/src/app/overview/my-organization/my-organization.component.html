@@ -1,0 +1,27 @@
+<div class="general-container"
+     fxFlex="grow"
+     fxLayoutGap="10px"
+     fxLayout="row wrap" fxLayoutAlign="start center">
+  <div class="spinner-container" *ngIf="!organizationLoaded">
+    <mat-spinner color="primary"></mat-spinner>
+  </div>
+  <mat-card *ngIf="emptyOrganizations && !serverUnavailable" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%"
+            class="general-item black-color"
+            fxLayout="column">{{getMyOrganizationsEmptyText()}}
+  </mat-card>
+  <mat-card *ngIf="serverUnavailable" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%" class="general-item red-color"
+            fxLayout="column">{{getUnavailableText()}}
+  </mat-card>
+  <ng-container *ngIf="organizationLoaded">
+    <div *ngFor="let organization of organizations" class="general-item general-background cursor-pointer" style="height:300px"
+         fxFlex="20%"
+         fxFlex.xs="100%"
+         fxFlex.sm="100%"
+         fxFlex.md="100%"
+         fxLayout="row wrap" fxLayoutAlign="center center"
+         [routerLink]="['/organizace', organization.organizationId]" routerLinkActive="active">
+      {{organization.aresVrForFEPruposes.obchodniFirmaValue != null ? organization.aresVrForFEPruposes.obchodniFirmaValue : 'IČO: ' + organization.ico}}
+    </div>
+    <div></div>
+  </ng-container>
+</div>

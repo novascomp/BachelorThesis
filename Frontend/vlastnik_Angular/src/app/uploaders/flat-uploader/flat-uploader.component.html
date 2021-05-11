@@ -1,0 +1,21 @@
+<mat-card>{{name}}</mat-card>
+<br>
+<mat-card><li class="black-color font-size-25"><a target="_blank" href="https://novascomp.synology.me/drive/d/f/611667372169804711">Struktura dokumentu</a></li></mat-card>
+<br>
+<ngx-dropzone style="height: 350px" (change)="preSelect($event, getRecaptchaFlatsUpload())"
+              *ngIf="uploadAvailable">
+  <ngx-dropzone-label>{{dropzoneTitle}}</ngx-dropzone-label>
+  <ngx-dropzone-preview [multiple]="false" *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+    <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+  </ngx-dropzone-preview>
+</ngx-dropzone>
+<div *ngIf="IsWait && getErrorText() == null" class="general-item black-color">
+  <mat-progress-bar color="accent" fxFlex=grow fxFlex.xs="100%" fxFlex.lg="50%" mode="indeterminate">
+  </mat-progress-bar>
+</div>
+<ng-container *ngIf="getErrorText() != null">
+  <br>
+  <mat-card
+    class="red-color">{{(getErrorText() == getBadRequestText()) ? getWrongFormat() : getErrorText()}}</mat-card>
+</ng-container>
+

@@ -1,0 +1,1821 @@
+{
+	"info": {
+		"_postman_id": "a97b9479-5359-4fc5-83a8-b3a3458f06d3",
+		"name": "NVHOME_BE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get user",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}users/{userId}",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{userId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"uid\": \"userUid\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users",
+									"host": [
+										"{{server}}users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"userId\",\r\n    \"uid\": \"userUid\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users",
+									"host": [
+										"{{server}}users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}users/{userId}",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{userId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}users",
+									"host": [
+										"{{server}}users"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Principal",
+					"item": [
+						{
+							"name": "Get User Principal Uid",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}users/uid",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"uid"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Principal Scopes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}users/scopes",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"scopes"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tokens",
+					"item": [
+						{
+							"name": "Get User Tokens",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}users/tokens",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"tokens"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Tokens By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}users/{userId}/tokens/",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{userId}",
+										"tokens",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Token",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get Token",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organization\": {\r\n        \"organizationId\": \"organizationId\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}tokens",
+									"host": [
+										"{{server}}tokens"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Token",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tokenId\": \"tokenId\",\r\n    \"key\": \"tokenKey\",\r\n    \"organization\": {\r\n        \"organizationId\": \"organizationId\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}tokens",
+									"host": [
+										"{{server}}tokens"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Token",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Tokens",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens",
+									"host": [
+										"{{server}}tokens"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Get User Tokens",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens/user",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add User By Token Key",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"key\": \"tokenKey\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}tokens/user/add",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"user",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Token By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}/user",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post User to token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"userId\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}/user",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove User from Token",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}/user/{userId}",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}",
+										"user",
+										"{userId}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Organization",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get Organization",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/{organizationId}",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"{organizationId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Organization",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ico\": \"ico\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}organizations",
+									"host": [
+										"{{server}}organizations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Put Organization",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizationId\": \"organizationId\",\r\n    \"ico\": \"ico\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}organizations",
+									"host": [
+										"{{server}}organizations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Organization",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/{organizatonId}",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"{organizatonId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Organizations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations",
+									"host": [
+										"{{server}}organizations"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "File",
+					"item": [
+						{
+							"name": "Get By Id",
+							"item": [
+								{
+									"name": "Get Organization By Id Documents",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{server}}organizations/{organizationId}/documents?page=&size=30",
+											"host": [
+												"{{server}}organizations"
+											],
+											"path": [
+												"{organizationId}",
+												"documents"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "size",
+													"value": "30"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Organization By Id Documents Components",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{server}}organizations/{organizationId}/documents/components/categories",
+											"host": [
+												"{{server}}organizations"
+											],
+											"path": [
+												"{organizationId}",
+												"documents",
+												"components",
+												"categories"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Organization By Id Documents Components By Id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{server}}organizations/{organizationId}/documents/components/categories/{componentId}",
+											"host": [
+												"{{server}}organizations"
+											],
+											"path": [
+												"{organizationId}",
+												"documents",
+												"components",
+												"categories",
+												"{componentId}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Organization By Id Document By Id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{server}}organizations/{organizationId}/documents/{documentId}",
+											"host": [
+												"{{server}}organizations"
+											],
+											"path": [
+												"{organizationId}",
+												"documents",
+												"{documentId}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Organization By Id Document By Id Components",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{server}}organizations/{organizationId}/documents/{documentId}/components/categories?page=0&size=1",
+											"host": [
+												"{{server}}organizations"
+											],
+											"path": [
+												"{organizationId}",
+												"documents",
+												"{documentId}",
+												"components",
+												"categories"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "0"
+												},
+												{
+													"key": "size",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Organization By Id Document By Id Component By Id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{server}}organizations/{organizationId}/documents/{documentId}/components/categories/{componentId}",
+											"host": [
+												"{{server}}organizations"
+											],
+											"path": [
+												"{organizationId}",
+												"documents",
+												"{documentId}",
+												"components",
+												"categories",
+												"{componentId}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Organization By Id Document By Id Contents",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{server}}organizations/{organizationId}/documents/{documentId}/contents",
+											"host": [
+												"{{server}}organizations"
+											],
+											"path": [
+												"{organizationId}",
+												"documents",
+												"{documentId}",
+												"contents"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Organization By Id Document By Id Content By Id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{server}}organizations/{organizationId}/documents/{documentId}/contents/{contentId}",
+											"host": [
+												"{{server}}organizations"
+											],
+											"path": [
+												"{organizationId}",
+												"documents",
+												"{documentId}",
+												"contents",
+												"{contentId}"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1",
+													"disabled": true
+												},
+												{
+													"key": "size",
+													"value": "1",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Post By Id",
+							"item": [
+								{
+									"name": "Post Organization File",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n      \"heading\": \"x\",\r\n      \"body\": \"My Body\"\r\n }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{server}}organizations/1e3344fd-664b-4cbb-af8c-1e65e3da7376/files",
+											"host": [
+												"{{server}}organizations"
+											],
+											"path": [
+												"1e3344fd-664b-4cbb-af8c-1e65e3da7376",
+												"files"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Post  Get Files By Categories",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"categories\": [\r\n        {\r\n            \"text\": \"Účetní závěrka\",\r\n            \"categoryId\": \"f6ad5144-ac08-4a36-af43-d5037ea544cd\"\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{server}}organizations/1e3344fd-664b-4cbb-af8c-1e65e3da7376/files/d5dff0af-996b-4d50-b871-fa04ceaecf7d/bycategories",
+											"host": [
+												"{{server}}organizations"
+											],
+											"path": [
+												"1e3344fd-664b-4cbb-af8c-1e65e3da7376",
+												"files",
+												"d5dff0af-996b-4d50-b871-fa04ceaecf7d",
+												"bycategories"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Post Organization Files Components",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"text\": \"Nezařazeno\"    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{server}}organizations/665430f9-f91c-49da-a827-f51e2eadcd6a/files/components/categories",
+											"host": [
+												"{{server}}organizations"
+											],
+											"path": [
+												"665430f9-f91c-49da-a827-f51e2eadcd6a",
+												"files",
+												"components",
+												"categories"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Post Organization File By Id Content",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"type": "file",
+													"src": "/C:/Users/Paul/Downloads/hotzovo.txt"
+												}
+											],
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{server}}organizations/1e3344fd-664b-4cbb-af8c-1e65e3da7376/files/2733d7b2-e677-4bee-aadb-d1aae93d9f35/contents",
+											"host": [
+												"{{server}}organizations"
+											],
+											"path": [
+												"1e3344fd-664b-4cbb-af8c-1e65e3da7376",
+												"files",
+												"2733d7b2-e677-4bee-aadb-d1aae93d9f35",
+												"contents"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Post Orgnization By Id Component To File By Id Components",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"componentId\": \"c341221c-7dc3-473d-a51f-3a1d22d77abc\"    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{server}}organizations/1e3344fd-664b-4cbb-af8c-1e65e3da7376/files/2733d7b2-e677-4bee-aadb-d1aae93d9f35/components/categories",
+											"host": [
+												"{{server}}organizations"
+											],
+											"path": [
+												"1e3344fd-664b-4cbb-af8c-1e65e3da7376",
+												"files",
+												"2733d7b2-e677-4bee-aadb-d1aae93d9f35",
+												"components",
+												"categories"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Delete By Id",
+							"item": [
+								{
+									"name": "Delete Organization By Id File By Id",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{server}}organizations/{organizationId}/documents/{documentId}",
+											"host": [
+												"{{server}}organizations"
+											],
+											"path": [
+												"{organizationId}",
+												"documents",
+												"{documentId}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Token",
+					"item": [
+						{
+							"name": "Get Organization Tokens",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/{organizationId}/tokens",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"{organizationId}",
+										"tokens"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "NV_FLAT_Microservice",
+					"item": [
+						{
+							"name": "Post",
+							"item": [
+								{
+									"name": "Post Organization Flats",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"flatsToUpload\": [\r\n        {\r\n            \"identifier\": \"identifier\",\r\n            \"size\": \"100m2\",\r\n            \"commonShareSize\": \"100/1100\"\r\n        },\r\n        {\r\n            \"identifier\": \"identifier\",\r\n             \"size\": \"100m2\",\r\n            \"commonShareSize\": \"100/1100\"\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{server}}organizations/{organizationId}/flats",
+											"host": [
+												"{{server}}organizations"
+											],
+											"path": [
+												"{organizationId}",
+												"flats"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Post Organization Flats MultiPartForm",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"type": "file",
+													"src": []
+												}
+											],
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{server}}organizations/{organizationId}/upload/flats",
+											"host": [
+												"{{server}}organizations"
+											],
+											"path": [
+												"{organizationId}",
+												"upload",
+												"flats"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Post OrganizationBy Id Flat By Id Token",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{server}}organizations/{organizationId}/flats/{flatId}/tokens",
+											"host": [
+												"{{server}}organizations"
+											],
+											"path": [
+												"{organizationId}",
+												"flats",
+												"{flatId}",
+												"tokens"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get Organization Flat Residents By Flat Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/{organizationId}/flats/{flatId}/residents",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"{organizationId}",
+										"flats",
+										"{flatId}",
+										"residents"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get OrganizationBy Id Flat By Id Tokens",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/{organizationId}/flats/{flatId}/tokens",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"{organizationId}",
+										"flats",
+										"{flatId}",
+										"tokens"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get OrganizationBy Id Flat By Id Token By Id Scopes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/{organizationId}/flats/{flatId}/tokens/{tokenId}/scopes",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"{organizationId}",
+										"flats",
+										"{flatId}",
+										"tokens",
+										"{tokenId}",
+										"scopes"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get OrganizationBy Id Flat By Id Token By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/{organizationId}/flats/{flatId}/tokens/{tokenId}/scopes",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"{organizationId}",
+										"flats",
+										"{flatId}",
+										"tokens",
+										"{tokenId}",
+										"scopes"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get OrganizationBy Id Flat By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/{organizationId}/flats/{flatId}/tokens",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"{organizationId}",
+										"flats",
+										"{flatId}",
+										"tokens"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Organization By Id Flats",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/{organizationId}/flats/",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"{organizationId}",
+										"flats",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get OrganizationBy Id Flat By Id Residents",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/{organizationId}/flats/{flatId}/residents",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"{organizationId}",
+										"flats",
+										"{flatId}",
+										"residents"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Personal",
+					"item": [
+						{
+							"name": "Get User Organizations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/personal",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"personal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Organizations Containing Flats",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/flats/personal",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"flats",
+										"personal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Organizations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/personal",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"personal"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Member",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get Member",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}members/{memberId}",
+									"host": [
+										"{{server}}members"
+									],
+									"path": [
+										"{memberId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Member",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"firstName\",\r\n    \"lastName\": \"lastName\",\r\n    \"email\": \"email\",\r\n    \"phone\": \"phone\",\r\n    \"dateOfBirth\": \"dateOfBirth\",\r\n    \"requiredCommittee\": \"requiredCommitteeId\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}members",
+									"host": [
+										"{{server}}members"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Member",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"firstName\",\r\n    \"lastName\": \"lastName\",\r\n    \"email\": \"email\",\r\n    \"phone\": \"phone\",\r\n    \"dateOfBirth\": \"dateOfBirth\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}members",
+									"host": [
+										"{{server}}members"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Member",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}members/{memberId}",
+									"host": [
+										"{{server}}members"
+									],
+									"path": [
+										"{memberId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Members",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}members",
+									"host": [
+										"{{server}}members"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Committee",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get Committee",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}committees/{id}",
+									"host": [
+										"{{server}}committees"
+									],
+									"path": [
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Committee",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"email\",\r\n    \"phone\": \"phone\",\r\n    \"organization\": {\r\n        \"organizationId\": \"organizationId\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}committees",
+									"host": [
+										"{{server}}committees"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Put Committee",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"committeeId\": \"committeeId\",\r\n    \"email\": \"email\",\r\n    \"phone\": \"phone\",\r\n    \"organization\": {\r\n        \"organizationId\": \"organizationId\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}committees",
+									"host": [
+										"{{server}}committees"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Committee",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}committees/{committeeId}",
+									"host": [
+										"{{server}}committees"
+									],
+									"path": [
+										"{committeeId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Committee",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}committees",
+									"host": [
+										"{{server}}committees"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Organization",
+					"item": [
+						{
+							"name": "Get Committee Organization",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/c08fc0b8-3c71-4ebd-b232-6477d9ec806f/committee",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"c08fc0b8-3c71-4ebd-b232-6477d9ec806f",
+										"committee"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Member",
+					"item": [
+						{
+							"name": "Get Committee Members",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}committees/33dba498-e10b-42fb-9cee-539dab69f70b/members",
+									"host": [
+										"{{server}}committees"
+									],
+									"path": [
+										"33dba498-e10b-42fb-9cee-539dab69f70b",
+										"members"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "File",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get File",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}files/{fileId}",
+									"host": [
+										"{{server}}files"
+									],
+									"path": [
+										"{fileId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post File",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n      \"organization\": {\r\n        \"organizationId\": \"organizationId\"\r\n    },\r\n    \"idNvm\": \"idNvm\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}files",
+									"host": [
+										"{{server}}files"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update File",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"fileId\": \"fileId\",\r\n      \"organization\": {\r\n        \"organizationId\": \"organizationId\"\r\n    },\r\n    \"idNvm\": \"idNvm\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}files",
+									"host": [
+										"{{server}}files"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete File",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}files/{fileId}",
+									"host": [
+										"{{server}}files"
+									],
+									"path": [
+										"{fileId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Files",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}files",
+									"host": [
+										"{{server}}files"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Register",
+			"item": [
+				{
+					"name": "Register Organization",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ico\": \"ico\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}registration",
+							"host": [
+								"{{server}}registration"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "About",
+			"item": [
+				{
+					"name": "NVHOME About",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}about",
+							"host": [
+								"{{server}}about"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Generator",
+			"item": [
+				{
+					"name": "Flats Generator",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}organizations/random/flats",
+							"host": [
+								"{{server}}organizations"
+							],
+							"path": [
+								"random",
+								"flats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": "http://localhost:8084/NVHOME/"
+		}
+	]
+}

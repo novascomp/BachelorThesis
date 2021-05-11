@@ -1,0 +1,1731 @@
+{
+	"info": {
+		"_postman_id": "f68aef38-416b-46d8-b9fb-b704ed42a03e",
+		"name": "NVFLAT_BE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get user",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}users/{id}",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"uid\": \"userUid\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users",
+									"host": [
+										"{{server}}users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"userId\",\r\n    \"uid\": \"uid\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users",
+									"host": [
+										"{{server}}users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}users/{id}",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}users",
+									"host": [
+										"{{server}}users"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Principal",
+					"item": [
+						{
+							"name": "Get User Principal Uid",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}users/{uid}",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{uid}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Principal Scopes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}users/scopes",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"scopes"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tokens",
+					"item": [
+						{
+							"name": "Get User Tokens",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}users/tokens",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"tokens"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Tokens By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}users/{id}/tokens/",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{id}",
+										"tokens",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Scope",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get Scope",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}scopes/{id}",
+									"host": [
+										"{{server}}scopes"
+									],
+									"path": [
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Scope",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"scope\": \"scope\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}scopes",
+									"host": [
+										"{{server}}scopes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Scope",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"scopeId\": \"scopeId\",\r\n    \"scope\": \"scope\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}scopes",
+									"host": [
+										"{{server}}scopes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Scope",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}scopes/{scopeId}",
+									"host": [
+										"{{server}}scopes"
+									],
+									"path": [
+										"{scopeId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Scopes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}scopes",
+									"host": [
+										"{{server}}scopes"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Token",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get Token",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"flat\": {\r\n        \"flatId\": \"flatId\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}tokens",
+									"host": [
+										"{{server}}tokens"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Token",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tokenId\": \"tokenId\",\r\n    \"key\": \"key\",\r\n    \"flat\": {\r\n        \"flatId\": \"flatId\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}tokens",
+									"host": [
+										"{{server}}tokens"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Token",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Tokens",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens?size=200",
+									"host": [
+										"{{server}}tokens"
+									],
+									"query": [
+										{
+											"key": "size",
+											"value": "200"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Scope",
+					"item": [
+						{
+							"name": "Get Token By Id Scopes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}/scopes/",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}",
+										"scopes",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Token By Id Scope By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}/scopes/{scopeId}",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}",
+										"scopes",
+										"{scopeId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Scope To Token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"scopeId\": \"scopeId\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}/scopes",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}",
+										"scopes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Scope from Token list",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}/scopes/{scopeId}",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}",
+										"scopes",
+										"{scopeId}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Flat",
+					"item": [
+						{
+							"name": "Get Token Flat",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}/flat",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}",
+										"flat"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Resident",
+					"item": [
+						{
+							"name": "Get Resident Token",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}/resident",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}",
+										"resident"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Resident Token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"residentId\": \"residentId\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}/resident",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}",
+										"resident"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Resident Token",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}/resident/{residentId}",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}",
+										"resident",
+										"{residentId}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Get User Tokens",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens/user",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add User By Token Key",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"key\": \"tokenKey\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}tokens/user/add",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"user",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Token By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}/user",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post User to token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"userId\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}/user",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove User from Token",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}tokens/{tokenId}/user/{userId}",
+									"host": [
+										"{{server}}tokens"
+									],
+									"path": [
+										"{tokenId}",
+										"user",
+										"{userId}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Organization",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get Organization",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/{organizationId}",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"{organizationId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Organization",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizationId\": \"organizationId\",\r\n    \"ico\": \"ico\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}organizations",
+									"host": [
+										"{{server}}organizations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Put Organization",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizationId\": \"organizationId\",\r\n    \"ico\": \"ico\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}organizations",
+									"host": [
+										"{{server}}organizations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Organization",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/{organizationId}",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"{organizationId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Organizations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations",
+									"host": [
+										"{{server}}organizations"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Organizatin Flats",
+					"item": [
+						{
+							"name": "Get Organization Flats",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/{organizationId}/flats",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"{organizationId}",
+										"flats"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Messages",
+					"item": [
+						{
+							"name": "Get Organization Flats Components",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}organizations/{organizationId}/messages/components",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"{organizationId}",
+										"messages",
+										"components"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Orgnization By Id Component To Document By Id Components",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"componentId\": \"componentId\"    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}organizations/{organizationId}/documents/{documentId}/components",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"{organizationId}",
+										"documents",
+										"{documentId}",
+										"components"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Organization Message",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n      \"heading\": \"heading\",\r\n      \"body\": \"body\"\r\n }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}organizations/{organizationId}/messages",
+									"host": [
+										"{{server}}organizations"
+									],
+									"path": [
+										"{organizationId}",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Flat",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get Flat",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}flats/{flatId}/detail",
+									"host": [
+										"{{server}}flats"
+									],
+									"path": [
+										"{flatId}",
+										"detail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Flat",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"identifier\": \"identifier\",\r\n    \"organization\": {\r\n        \"organizationId\": \"organizationId\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}flats",
+									"host": [
+										"{{server}}flats"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Flat",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"flatId\": \"flatId\",\r\n    \"identifier\": \"identifier\",\r\n    \"organization\": {\r\n        \"organizationId\": \"organizationId\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}flats",
+									"host": [
+										"{{server}}flats"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Flat",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}flats/{flatId}",
+									"host": [
+										"{{server}}flats"
+									],
+									"path": [
+										"{flatId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Flats",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}flats",
+									"host": [
+										"{{server}}flats"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tokens",
+					"item": [
+						{
+							"name": "Get Flat Tokens",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}flats/{flatId}/tokens",
+									"host": [
+										"{{server}}flats"
+									],
+									"path": [
+										"{flatId}",
+										"tokens"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Detail",
+					"item": [
+						{
+							"name": "Get Flat Detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}flats/{flatId}/detail",
+									"host": [
+										"{{server}}flats"
+									],
+									"path": [
+										"{flatId}",
+										"detail"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Organization",
+					"item": [
+						{
+							"name": "Get Flat Organization",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}flats/{flatId}/organization",
+									"host": [
+										"{{server}}flats"
+									],
+									"path": [
+										"{flatId}",
+										"organization"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Get Flat User Personal",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}flats/personal",
+									"host": [
+										"{{server}}flats"
+									],
+									"path": [
+										"personal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Organization User Personal",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}flats/personal/organizations",
+									"host": [
+										"{{server}}flats"
+									],
+									"path": [
+										"personal",
+										"organizations"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Detail",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get Detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}details",
+									"host": [
+										"{{server}}details"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Detail",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"size\": \"100m2\",\r\n    \"commonShareSize\": \"100/5000\",\r\n    \"flat\": {\r\n        \"flatId\": \"flatId\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}details",
+									"host": [
+										"{{server}}details"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Detail",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"detailId\": \"detailId\",\r\n    \"size\": \"100m2\",\r\n    \"commonShareSize\": \"100/5000\",\r\n    \"flat\": {\r\n        \"flatId\": \"flatId\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}details",
+									"host": [
+										"{{server}}details"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Detail",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}details/{detailId}",
+									"host": [
+										"{{server}}details"
+									],
+									"path": [
+										"{detailId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}details",
+									"host": [
+										"{{server}}details"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Detail Get Flat",
+					"item": [
+						{
+							"name": "Get Detail Flat",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}details/{detailId}/flat",
+									"host": [
+										"{{server}}details"
+									],
+									"path": [
+										"{detailId}",
+										"flat"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Resident",
+					"item": [
+						{
+							"name": "Get Detail Resident",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"residentId\": \"residentId\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}details/{detaiIId}/residents",
+									"host": [
+										"{{server}}details"
+									],
+									"path": [
+										"{detaiIId}",
+										"residents"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Resident To Detail",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"residentId\": \"residentId\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}details/{detailId}/residents",
+									"host": [
+										"{{server}}details"
+									],
+									"path": [
+										"{detailId}",
+										"residents"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Resident From Detail",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}details/{detailId}/residents/{residentId}",
+									"host": [
+										"{{server}}details"
+									],
+									"path": [
+										"{detailId}",
+										"residents",
+										"{residentId}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Messages",
+					"item": [
+						{
+							"name": "Get Detail Messages",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/NVFLAT/details/{detailId}/messages",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"NVFLAT",
+										"details",
+										"{detailId}",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Resident",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get Resident",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}residents/{residentId}",
+									"host": [
+										"{{server}}residents"
+									],
+									"path": [
+										"{residentId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Resident",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"residentId\": \"residentId\",\r\n    \"firstName\": \"firstName\",\r\n    \"lastName\": \"lastName\",\r\n    \"email\": \"email\",\r\n    \"phone\": \"phone\",\r\n    \"dateOfBirth\": \"dateOfBirth\",\r\n    \"requiredFlatDetail\": \"detailId\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}residents",
+									"host": [
+										"{{server}}residents"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Resident",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"residentId\": \"residentId\",\r\n    \"firstName\": \"firstName\",\r\n    \"lastName\": \"lastName\",\r\n    \"email\": \"email\",\r\n    \"phone\": \"phone\",\r\n    \"dateOfBirth\": \"dateOfBirth\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}residents",
+									"host": [
+										"{{server}}residents"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Resident",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}residents/{residentId}",
+									"host": [
+										"{{server}}residents"
+									],
+									"path": [
+										"{residentId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Residents",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}residents",
+									"host": [
+										"{{server}}residents"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Token",
+					"item": [
+						{
+							"name": "Get Resident Tokens",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}residents/{residentId}/tokens",
+									"host": [
+										"{{server}}residents"
+									],
+									"path": [
+										"{residentId}",
+										"tokens"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Message",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get Message",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}messages/{messageId}",
+									"host": [
+										"{{server}}messages"
+									],
+									"path": [
+										"{messageId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Message",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idInNvm\": \"idInNvm\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}messages",
+									"host": [
+										"{{server}}messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Message",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"messageRecordNvmId\": \"messageRecordNvmId\",\r\n    \"idInNvm\": \"idInNvm\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}messages",
+									"host": [
+										"{{server}}messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Message",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}messages/{messageId}",
+									"host": [
+										"{{server}}messages"
+									],
+									"path": [
+										"{messageId}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Messages",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}messages",
+									"host": [
+										"{{server}}messages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "About",
+			"item": [
+				{
+					"name": "NVF About",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}about",
+							"host": [
+								"{{server}}about"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Personal",
+			"item": [
+				{
+					"name": "Flats Personal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}flats/personal",
+							"host": [
+								"{{server}}flats"
+							],
+							"path": [
+								"personal"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Flats Personal Organizations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}flats/personal/organizations?page=0&size=500",
+							"host": [
+								"{{server}}flats"
+							],
+							"path": [
+								"personal",
+								"organizations"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": "http://localhost:8083/NVFLAT/"
+		}
+	]
+}

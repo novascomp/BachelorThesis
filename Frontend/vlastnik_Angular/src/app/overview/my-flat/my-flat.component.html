@@ -1,0 +1,41 @@
+<div class="general-container"
+     fxFlex="grow"
+     fxLayout="row wrap" fxLayoutAlign="start center">
+  <div class="spinner-container" *ngIf="!flatLoaded">
+    <mat-spinner color="primary"></mat-spinner>
+  </div>
+  <mat-card *ngIf="emptyFlats && !unauthorized && !serverUnavailable" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%" class="general-item black-color"
+            fxLayout="column">{{getMyFlatsEmptyText()}}
+  </mat-card>
+  <mat-card *ngIf="unauthorized" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%" class="general-item red-color"
+            fxLayout="column">{{getUnauthorizedText()}}
+  </mat-card>
+  <mat-card *ngIf="serverUnavailable" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%" class="general-item red-color"
+            fxLayout="column">{{getUnavailableText()}}
+  </mat-card>
+  <ng-container *ngIf="flatLoaded">
+    <ng-container *ngFor="let organization of organizations">
+      <ng-container *ngIf="this.map.get(organization.organizationId).length != 0">
+        <div fxFlex="grow" fxLayout="row wrap"
+             class="ico-item">
+          <mat-card fxFlex.xs="100%" fxFlex.sm="100%"
+                    fxFlex.md="100%" class="general-item black-color cursor-auto"
+                    fxLayout="column">{{organization.aresVrForFEPruposes != null ? organization.aresVrForFEPruposes.obchodniFirmaValue : "IČO: " + organization.ico}}
+          </mat-card>
+          <div *ngFor="let flat of this.map.get(organization.organizationId)"
+               class="flatTile general-background cursor-pointer" style="height:300px"
+               fxFlex="20%"
+               fxFlex.xs="100%"
+               fxFlex.sm="100%"
+               fxFlex.md="100%"
+               fxLayout="row wrap" fxLayoutAlign="center center"
+               [routerLink]="['/moje/jednotky/',  flat.flatId]" routerLinkActive="active">
+            <span fxFlex="100%">{{"Jednotka"}}</span>
+            <span fxFlex="100%"><br></span>
+            <span fxFlex="100%">{{"ID. " + flat.identifier}}</span>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>

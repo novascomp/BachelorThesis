@@ -1,0 +1,61 @@
+<mat-card>{{tableName}}</mat-card>
+<br>
+<table mat-table class="mat-elevation-z8 full-table" matSortActive="text" matSortDirection="asc" matSort
+       aria-label="Elements" [dataSource]="dataSource">
+  <ng-container matColumnDef="text">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Název</th>
+    <td mat-cell *matCellDef="let row">{{row.text}}</td>
+  </ng-container>
+  <ng-container matColumnDef="categoryId">
+    <th mat-header-cell *matHeaderCellDef>Akce</th>
+    <td mat-cell *matCellDef="let element">
+      <button *ngIf="element.text !== getDefaultCategoryName() && element.text !== getaAresCategoryName()"
+              mat-raised-button color="accent"
+              (click)="preSubmitFormDeleteCategory(getRecaptchaActionComponent(), element.categoryId)">Smazat
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<ng-container>
+  <div class="full-table white-background">&nbsp;</div>
+  <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column" fxLayoutAlign="end center"
+       class="white-background">
+    <mat-spinner *ngIf="dataSource.loading$ | async" fxFlex="30" color="primary" diameter="65"></mat-spinner>
+    <span>&nbsp;</span>
+    <button *ngIf="!(dataSource.loading$ | async)" fxFlex="30" class="submitButton"
+            (click)="loadPage()" mat-button matTooltip="Kliknutím aktualizujete tabulku">
+      <span class="material-icons">update</span> Aktualizovat
+    </button>
+    <mat-paginator fxFlex="grow" class="font-size-15 white-background" #paginator [length]="dataSource?.totalElements"
+                   [pageIndex]="0"
+                   [pageSize]="5"
+                   [pageSizeOptions]="[5, 10, 15, 20, 50]" (page)="pageChange($event)">
+    </mat-paginator>
+  </div>
+</ng-container>
+<ng-container *ngIf="dataSource.unavailable === true">
+  <br>
+  <mat-card class="red-color"
+            fxLayout="column">{{getUnavailableText()}}
+  </mat-card>
+</ng-container>
+<br>
+<mat-card>
+  <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column" fxLayoutAlign="end center">
+    <div fxFlex="grow"></div>
+    <button fxFlex="grow" class="submitButton" (click)="displayCategoryAddForm()"
+            mat-button
+            [matTooltip]="categoryAddFormDisplay ? 'Kliknutím zavřete formulář' : 'Kliknutím zobrazíte formulář přidání kategorie'">
+      {{categoryAddFormDisplay ? 'Zavřít formulář' : 'Přidat kategorii'}}</button>
+  </div>
+</mat-card>
+<ng-container *ngIf="getErrorText() != null">
+  <br>
+  <mat-card *ngIf="getErrorText() != null"
+            class="red-color">{{getErrorText()}}</mat-card>
+</ng-container>
+<br>
+<app-component-stepper *ngIf="categoryAddFormDisplay" [initComponent]="componentStepperInit"
+                       (afterDone)="categoriesUpdated($event)"></app-component-stepper>

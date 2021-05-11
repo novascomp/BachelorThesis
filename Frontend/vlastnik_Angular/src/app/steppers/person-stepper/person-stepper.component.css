@@ -1,0 +1,26 @@
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.mat-form-field{
+  color: black;
+  width: 100%;
+}
+
+/*https://stackoverflow.com/questions/55400932/how-to-set-different-width-for-different-form-in-mat-horizontal-stepper*/
+
+::ng-deep .mat-vertical-stepper-content[aria-expanded="false"] {
+  width: 0px !important;
+}
+
+.mat-error{
+  color: black;
+}
+
+.item-1 {
+  background-color: #3f51b5;
+}

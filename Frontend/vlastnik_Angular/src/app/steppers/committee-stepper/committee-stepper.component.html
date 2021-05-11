@@ -1,0 +1,38 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="emailFormGroup">
+    <form [formGroup]="emailFormGroup">
+      <ng-template matStepLabel><span class="mat-headline">Email</span></ng-template>
+      <mat-form-field>
+        <mat-label>Zadejte email</mat-label>
+        <input [(ngModel)]="committee.email" type="email" matInput formControlName="email"
+               placeholder="example@example.com" required>
+      </mat-form-field>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <button fxFlex="grow" class="next-button" mat-button matStepperPrevious>Návrat</button>
+        <div fxFlex="grow"></div>
+        <button fxFlex="grow" class="next-button" mat-button matStepperNext>Pokračovat</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="phoneFormGroup">
+    <ng-template matStepLabel><span class="mat-headline">Telefonní číslo</span></ng-template>
+    <form [formGroup]="phoneFormGroup">
+      <mat-form-field>
+        <mat-label>Zadejte telefonní číslo</mat-label>
+        <input [(ngModel)]="committee.phone" type="tel" matInput formControlName="phone" placeholder="" required>
+      </mat-form-field>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <button fxFlex="grow" class="submitButton" mat-button matStepperPrevious>Návrat</button>
+        <div fxFlex="grow"></div>
+        <button fxFlex="grow" class="submitButton" mat-button matStepperNext
+                (click)="preSubmitForm(getRecaptchaActionCommittee())">Odeslat
+        </button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
+<br>
+<mat-card *ngIf="invalidForm"
+          class="red-color">{{getBadRequestText()}}</mat-card>
+<mat-card *ngIf="getErrorText() != null"
+          class="red-color">{{getErrorText()}}</mat-card>

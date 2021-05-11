@@ -1,0 +1,72 @@
+<mat-card>{{tableName}}</mat-card>
+<br>
+<table mat-table class="mat-elevation-z8 full-table" matSortActive="identifier" matSortDirection="asc" matSort
+       aria-label="Elements" [dataSource]="dataSource">
+  <ng-container matColumnDef="identifier">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Identifikátor</th>
+    <td mat-cell *matCellDef="let row">{{row.identifier}}</td>
+  </ng-container>
+  <ng-container matColumnDef="size">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Velikost bytu</th>
+    <td mat-cell *matCellDef="let row">{{row.size}}</td>
+  </ng-container>
+  <ng-container matColumnDef="commonShareSize">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Podíl</th>
+    <td mat-cell *matCellDef="let row">{{row.commonShareSize}}</td>
+  </ng-container>
+  <ng-container matColumnDef="flatPortal">
+    <th mat-header-cell *matHeaderCellDef>Portál jednotky</th>
+    <td mat-cell *matCellDef="let row"><a
+      [href]="'/organizace/'+ organizationId + '/jednotky/' + row.flatId ">Přejít na portál</a></td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<ng-container>
+  <div class="full-table white-background">&nbsp;</div>
+  <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column" fxLayoutAlign="end center"
+       class="white-background">
+    <mat-spinner *ngIf="(dataSource.loading$ | async) || this.submitted" fxFlex="30" color="primary"
+                 diameter="65"></mat-spinner>
+    <span>&nbsp;</span>
+    <button *ngIf="!(dataSource.loading$ | async) &&  (this.submitted == false)" fxFlex="30" class="submitButton"
+            (click)="loadPage()" mat-button matTooltip="Kliknutím aktualizujete tabulku">
+      <span class="material-icons">update</span> Aktualizovat
+    </button>
+    <mat-paginator fxFlex="grow" class="font-size-15 white-background" #paginator [length]="dataSource?.totalElements"
+                   [pageIndex]="0"
+                   [pageSize]="5"
+                   [pageSizeOptions]="[5, 10, 15, 20, 50]" (page)="pageChange($event)">
+    </mat-paginator>
+  </div>
+</ng-container>
+<ng-container *ngIf="dataSource.unavailable === true">
+  <br>
+  <mat-card class="red-color"
+            fxLayout="column">{{getUnavailableText()}}
+  </mat-card>
+</ng-container>
+<ng-container *ngIf="!(dataSource.loading$ | async) && !dataSource.unavailable && (!this.submitted)">
+  <br>
+  <mat-card>
+    <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column" fxLayoutAlign="end center"
+         fxLayoutAlign.xs="start center">
+      <div fxFlex="grow"></div>
+      <button *ngIf="dataSource.totalElements === 0" fxFlex="grow"
+              class="submitButton" (click)="preSubmitForm(getRecaptchaActionFlatsUpload())"
+              mat-raised-button matTooltip="Kliknutím vygenerujete náhodné jednotky">
+        Vygenerovat jednotky
+      </button>
+      <button *ngIf="dataSource.totalElements > 0" fxFlex="grow"
+              class="submitButton" color="accent" (click)="preSubmitForm(getRecaptchaActionFlatsDelete())"
+              mat-raised-button matTooltip="Kliknutím smažete jednotky">Smazat jednotky
+      </button>
+    </div>
+  </mat-card>
+</ng-container>
+<ng-container *ngIf="getErrorText() != null">
+  <br>
+  <mat-card
+    class="red-color">{{getErrorText() === getBadRequestText() ? getInvalidOperation() : getErrorText()}}</mat-card>
+</ng-container>
+

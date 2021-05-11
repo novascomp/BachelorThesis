@@ -1,0 +1,18 @@
+<div>
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon"  mat-button [matMenuTriggerFor]="belowMenu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #belowMenu="matMenu" yPosition="below">
+    <button *ngIf="!isAuthenticated" mat-menu-item routerLink="/login">Přihlašovací obrazovka</button>
+    <button *ngIf="isAuthenticated" mat-menu-item routerLink="/prehled">Můj přehled</button>
+    <button mat-menu-item routerLink="/oaplikaci">O aplikaci</button>
+  </mat-menu>
+  <span>Vlastník</span>
+  <span class="example-spacer"></span>
+  <button class="logoutButtonTop" *ngIf="isAuthenticated" (click)="oktaAuth.logout()" routerLink="/" mat-flat-button
+          color="accent">Odhlásit se
+  </button>
+</mat-toolbar>
+<router-outlet></router-outlet>
+</div>

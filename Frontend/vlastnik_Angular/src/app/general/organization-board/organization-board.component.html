@@ -1,0 +1,30 @@
+<div fxFlex="grow" fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column"
+     fxLayoutGap="10px" fxLayoutAlign="start start" class="parent">
+  <div class="mat-elevation-z8 general-item general-background"
+       fxFlex="50"
+       fxFlex.xs="grow"
+       fxFlex.sm="grow"
+       fxFlex.md="grow"
+       fxLayout.xs="column"
+       fxLayout.sm="column"
+       fxLayout.md="column"
+       fxLayout="column" fxLayoutAlign="start stretch">
+    <app-document-table *ngIf="messageTableInit != null && this.organizationBoardInit.organizationId != null"
+                        [initComponent]="messageTableInit"></app-document-table>
+  </div>
+  <div class="mat-elevation-z8 general-item general-background"
+       fxFlex="45"
+       fxFlex.xs="grow"
+       fxFlex.sm="grow"
+       fxFlex.md="grow"
+       fxLayout.xs="column"
+       fxLayout.sm="column"
+       fxLayout.md="column"
+       fxLayout="column" fxLayoutAlign="start stretch">
+    <app-committee *ngIf="committeeInit!= null" (newItemEvent)="displayOrganizationMembers($event)"
+                   (committeeLoadEvent)="committeeLoaded($event)" [initComponent]="committeeInit"></app-committee>
+    <br>
+    <app-person-table *ngIf="displayMember && committeeExists" [initComponent]="memberTableInit">
+    </app-person-table>
+  </div>
+</div>
